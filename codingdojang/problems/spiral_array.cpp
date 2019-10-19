@@ -89,7 +89,7 @@ int main()
 
 	for (i = 0; i < r; i++)
 	{
-		for (j = 0;j < c; j++)
+		for (j = 0; j < c; j++)
 		{
 			cout.width(width);
 			cout << matrix[i][j] - 1;
