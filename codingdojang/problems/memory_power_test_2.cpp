@@ -1,4 +1,4 @@
-// Problem: http://codeup.kr/JudgeOnline/problem.php?id=1430
+// Problem: https://codeup.kr/problem.php?id=1430
 
 #include <iostream>
 #include <vector>
