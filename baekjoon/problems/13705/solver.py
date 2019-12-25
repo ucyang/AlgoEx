@@ -8,8 +8,8 @@ def pi():
     lasts, t, s, n, na, d, da = 0, three, 3, 1, 0, 0, 24
     while s != lasts:
         lasts = s
-        n, na = n+na, na+8
-        d, da = d+da, da+32
+        n, na = n + na, na + 8
+        d, da = d + da, da + 32
         t = (t * n) / d
         s += t
     getcontext().prec -= 2
@@ -23,7 +23,7 @@ def sin(x):
         lasts = s
         i += 2
         fact *= i * (i - 1)
-        num *= x * x
+        num *= x ** 2
         sign *= -1
         s += num / fact * sign
     getcontext().prec -= 2
@@ -37,7 +37,7 @@ def cos(x):
         lasts = s
         i += 2
         fact *= i * (i - 1)
-        num *= x * x
+        num *= x ** 2
         sign *= -1
         s += num / fact * sign
     getcontext().prec -= 2
