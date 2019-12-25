@@ -53,7 +53,7 @@ def get_next_x(x):
     return x - f(x) / f_prime(x)
 
 def newton_raphson():
-    t = Decimal(0)
+    t = 0
     while True:
         x = get_next_x(t)
         if round(x, 8) == round(t, 8):
@@ -63,5 +63,5 @@ def newton_raphson():
 
 getcontext().prec = 100
 PI = pi()
-a, b, c = map(Decimal, input().split())
+a, b, c = map(int, input().split())
 print("{:.6f}".format(abs(newton_raphson())))
