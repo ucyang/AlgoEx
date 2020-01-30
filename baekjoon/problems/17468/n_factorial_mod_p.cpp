@@ -168,6 +168,10 @@ int main()
     unsigned long long d, m, i;
     vector<unsigned __int128> fact_part{ 1, 2 };
 
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
     cin >> n >> p;
 
     if (!p)
