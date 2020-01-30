@@ -87,6 +87,10 @@ int main()
     unsigned long long n, m, i;
     vector<unsigned long long> f, g;
 
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
     cin >> n >> m;
 
     f.resize(n + 1);
