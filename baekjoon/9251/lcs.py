@@ -9,15 +9,14 @@ if len(A) > len(B):
     A, B = B, A
 
 dp = [0] * (len(A) + 1)
-dp_tmp = [0] * (len(A) + 1)
 
 for b in B:
+    t = dp[0]
+
     for i, a in enumerate(A, start=1):
         if a == b:
-            dp_tmp[i] = dp[i - 1] + 1
+            t, dp[i] = dp[i], t + 1
         else:
-            dp_tmp[i] = max(dp[i], dp_tmp[i - 1])
-
-    dp, dp_tmp = dp_tmp, dp
+            t, dp[i] = dp[i], max(dp[i], dp[i - 1])
 
 print(dp[-1])
