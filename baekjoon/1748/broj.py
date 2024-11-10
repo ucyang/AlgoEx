@@ -1,19 +1,12 @@
 N = int(input())
 
-n = N // 10
-d = len(str(N))
-
-a = 1
-b = 9
-
+m = 1
 s = 0
 
-while n:
-    s += a * b
-    n //= 10
-    a += 1
-    b *= 10
+while N >= 10 * m:
+    s += (9 * m) * len(str(m))
+    m *= 10
 
-s += (N - 10 ** (d - 1) + 1) * d
+s += (N - m + 1) * len(str(m))
 
 print(s)
