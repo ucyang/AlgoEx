@@ -2,15 +2,15 @@ class Solution:
     def compress(self, chars: list[str]) -> int:
         last_c = chars[0]
         last_idx = 0
-        count = 0
+        count = 1
 
-        for c in chars:
-            if c == last_c:
+        for i in range(1, len(chars)):
+            if chars[i] == last_c:
                 count += 1
             else:
                 last_idx = self.compress_last_char(chars, last_c, last_idx, count)
 
-                last_c = c
+                last_c = chars[i]
                 count = 1
         else:
             last_idx = self.compress_last_char(chars, last_c, last_idx, count)
