@@ -11,20 +11,22 @@ class TreeNode:
 
 class Solution:
     def rightSideView(self, root: TreeNode | None) -> list[int]:
-        visited = set()
-        queue = deque([(root, 0)])
+        if root is None:
+            return []
+
+        queue = deque([root])
         result = []
 
         while queue:
-            node, level = queue.popleft()
+            result.append(queue[0].val)
 
-            if node:
-                if level not in visited:
-                    visited.add(level)
-                    result.append(node.val)
+            for _ in range(len(queue)):
+                node = queue.popleft()
 
-                queue.append((node.right, level + 1))
-                queue.append((node.left, level + 1))
+                if node.right:
+                    queue.append(node.right)
+                if node.left:
+                    queue.append(node.left)
     
         return result
 
