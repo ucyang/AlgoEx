@@ -27,14 +27,14 @@ class Solution:
                     queue.append(node.right)
                 if node.left:
                     queue.append(node.left)
-    
+
         return result
 
 
 def get_root(adj: list[int], idx: int = 0) -> TreeNode | None:
     node = None
 
-    if idx < len(adj) and adj[idx]:
+    if idx < len(adj) and adj[idx] is not None:
         val = adj[idx]
         left = get_root(adj, 2 * idx + 1)
         right = get_root(adj, 2 * idx + 2)
