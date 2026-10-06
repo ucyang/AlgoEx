@@ -1,30 +1,28 @@
 class Solution:
     def nearestExit(self, maze: list[list[str]], entrance: list[int]) -> int:
+        DIRS = ((-1, 0), (1, 0), (0, -1), (0, 1))
+
         queue = deque([tuple(entrance)])
-        visited = set(tuple(entrance))
+        maze[entrance[0]][entrance[1]] = "+"
 
         m = len(maze)
         n = len(maze[0])
-        steps = 0
+
+        steps = 1
 
         while queue:
             for _ in range(len(queue)):
                 r, c = queue.popleft()
 
-                if (r != entrance[0] or c != entrance[1]) and (
-                    r == 0 or r == m - 1 or c == 0 or c == n - 1
-                ):
-                    return steps
+                for dr, dc in DIRS:
+                    nr, nc = r + dr, c + dc
 
-                for nr, nc in ((r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)):
-                    if (
-                        0 <= nr < m
-                        and 0 <= nc < n
-                        and (nr, nc) not in visited
-                        and maze[nr][nc] == "."
-                    ):
+                    if 0 <= nr < m and 0 <= nc < n and maze[nr][nc] == ".":
+                        if nr == 0 or nr == m - 1 or nc == 0 or nc == n - 1:
+                            return steps
+
                         queue.append((nr, nc))
-                        visited.add((nr, nc))
+                        maze[nr][nc] = "+"
 
             steps += 1
 
