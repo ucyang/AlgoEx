@@ -1,11 +1,10 @@
 class Solution:
     def minReorder(self, n: int, connections: list[list[int]]) -> int:
-        tree = [[] for _ in range(n)]
-        rtree = [[] for _ in range(n)]
+        tree = [{} for _ in range(n)]
 
         for a, b in connections:
-            tree[b].append(a)
-            rtree[a].append(b)
+            tree[a][b] = 1
+            tree[b][a] = 0
 
         queue = [(0, -1)]
         count = 0
@@ -13,13 +12,9 @@ class Solution:
         while queue:
             a, p = queue.pop()
     
-            for b in tree[a]:
+            for b, d in tree[a].items():
                 if b != p:
                     queue.append((b, a))
-    
-            for b in rtree[a]:
-                if b != p:
-                    queue.append((b, a))
-                    count += 1
+                    count += d
     
         return count
