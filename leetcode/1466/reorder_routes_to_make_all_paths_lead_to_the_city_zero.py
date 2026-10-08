@@ -1,31 +1,25 @@
 class Solution:
     def minReorder(self, n: int, connections: list[list[int]]) -> int:
-        tree = defaultdict(list)
-        rtree = defaultdict(list)
+        tree = [[] for _ in range(n)]
+        rtree = [[] for _ in range(n)]
 
         for a, b in connections:
             tree[b].append(a)
             rtree[a].append(b)
 
-        queue = [0]
-
-        visited = [False] * n
-        visited[0] = True
-
+        queue = [(0, -1)]
         count = 0
 
         while queue:
-            a = queue.pop()
+            a, p = queue.pop()
     
             for b in tree[a]:
-                if not visited[b]:
-                    queue.append(b)
-                    visited[b] = True
+                if b != p:
+                    queue.append((b, a))
     
             for b in rtree[a]:
-                if not visited[b]:
-                    queue.append(b)
-                    visited[b] = True
+                if b != p:
+                    queue.append((b, a))
                     count += 1
     
         return count
